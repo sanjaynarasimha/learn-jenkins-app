@@ -21,5 +21,24 @@ pipeline {
                 '''
             }
         }
+        stage('test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    ls -la
+                    cd demo
+                    ls | grep index.html
+                    cd ..
+                    npm test
+                    npm run test
+
+                '''
+            }
+        }
     }
 }
