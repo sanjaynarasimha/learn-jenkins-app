@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                     ls -la
-                    cd demo
+                    cd build
                     ls | grep index.html
                     cd ..
                     npm test
